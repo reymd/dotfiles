@@ -1,0 +1,27 @@
+! Colors
+*.color0: #0F0F0F
+*.color1: #335151
+*.color2: #61545D
+*.color3: #A03A57
+*.color4: #995C6C
+*.color5: #A87589
+*.color6: #73808E
+*.color7: #c9c0c9
+*.color8: #8c868c
+*.color9: #262626
+*.color10: #61545D
+*.color11: #A03A57
+*.color12: #995C6C
+*.color13: #A87589
+*.color14: #73808E
+*.color15: #c9c0c9
+
+! Urxvt Settings
+URxvt.font: xft: Termsyn.Icons:size=12
+URxvt.scrollBar: false
+URxvt.perl-ext-common: selection-to-clipboard
+URxvt.background: #0F0F0F
+URxvt.foreground: #c9c0c9
+
+! X settings
+Xcursor.theme: OpenZone_Ice
