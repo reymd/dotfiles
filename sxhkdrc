@@ -1,0 +1,71 @@
+## Rey's sxhkd config
+#
+#
+
+# Window Manager Control 
+#
+# reload sxkhd
+alt + ctrl + r
+	pkill -USR1 -x sxhkd
+
+# reload/quit bspwm
+alt + shift + {Escape,r}
+	bspc {quit,wm -r}
+
+# lock the desktop
+alt + x
+	i3lock -c 0F0F0F
+
+
+# Application Keybinds 
+#
+# terminal applications
+alt + {Return,m,p}
+	{urxvt,urxvt -e gotop,urxvt -e pulsemixer}
+
+# application launcher
+alt + d
+	~/scripts/dmenu.sh
+
+# gui applications
+alt + {b,g,i}
+	{qutebrowser,steam,gimp}
+
+# redshift
+alt + {F9,F10,F11,F12}
+	redshift {-P -O 4000,-P -O 3500,-P -O 3000,-x}
+
+
+# Window Control and Manipulation
+#
+# move a tiled window window
+alt + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# move a floating window
+alt  + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# expand window in i3 fashion(kinda.. WIP)
+alt + ctrl + {h,k}
+	bspc node -z {left -40 0,top 0 -40}
+
+# shink window in i3 fashion(kinda.. WIP)
+alt + ctrl + {j,l}
+	bspc node -z {top 0 +40,left +40 0}
+
+# move selected window to master
+alt + c
+	bspc node -s biggest
+
+# set the window state
+alt + {space,shift + space}
+	bspc node -t {tiled,floating}
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# close selected window
+alt + shift + q
+	bspc node -{c,k}
