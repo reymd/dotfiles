@@ -1,0 +1,154 @@
+## Rey's Polybar Config
+
+[colors]
+background = ${xrdb:color0:#0F0F0F}
+foreground = ${xrdb:color2:#61545D}
+foreground2 = ${xrdb:color9:#262626}
+color1 = ${xrdb:color5:#A87589}
+color2 = ${xrdb:color1:#335151}
+color3 = ${xrdb:color4:#995C6C}
+color4 = ${xrdb:color6:#73808E}
+alert =  ${xrdb:color3:#A03A57}
+
+[bar/mybar]
+width = 100%
+height = 20
+radius = 0
+fixed-center = true
+separator = |
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = ${colors.foreground}
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = termsyn.icons:size=10;2
+
+modules-left = bspwm xwindow
+modules-center = 
+modules-right = filesystem memory cpu wireless-network date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:50:...%
+label-foreground = ${colors.color4}
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+
+wrapping-scroll = true
+enable-click = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = false
+
+label-mode-padding = 0
+;label-mode-foreground = 
+label-mode-background = ${colors.background}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.color1}
+label-focused-foreground = ${colors.background}
+label-focused-underline= ${colors.background}
+label-focused-padding = 1
+
+; occupied = Inactive workspace on any monitor
+label-occupied = %name%
+label-occupied-padding = 1
+label-occupied-background = ${colors.foreground2}
+label-occupied-foreground = ${colors.foreground}
+
+; empty = Active workspace on unfocused monitor
+label-empty = %name%
+label-empty-background = ${colors.background}
+label-empty-padding = 1
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.background}
+label-urgent-padding = 1
+
+[module/cpu]
+type = internal/cpu
+interval = 5
+format-prefix = "Usage "
+format-prefix-foreground = ${colors.color3}
+;format-underline = #f90000
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "Memory "
+format-prefix-foreground = ${colors.color3}
+label = %percentage_used%%
+
+[module/wireless-network]
+type = internal/network
+interface = wlp5s0
+interval = 3.0
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+format-connected-prefix = "Wireless "
+format-connected-prefix-foreground = ${colors.color3}
+label-connected = %essid%
+label-connected-foreground = ${colors.foreground}
+
+format-disconnect-prefix = "Wireless "
+format-disconnected-prefix-foreground = ${colors.color3}
+label-disconnected = N/A
+label-disconnected-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = %m-%d 
+date-alt = "%Y-%m-%d"
+
+time = %H:%M
+time-alt = 
+
+format-prefix = "Time " 
+format-prefix-foreground = ${colors.color3}
+
+label = %date% %time%
+
+[module/filesystem]
+type = internal/fs
+interval = 30
+fixed-values = false
+spacing = 4
+
+mount-0 = /
+
+format-mounted = <label-mounted>
+format-mounted-prefix = "Filesystem "
+format-mounted-prefix-foreground = ${colors.color3}
+label-mounted = %used% / %total%
+
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
